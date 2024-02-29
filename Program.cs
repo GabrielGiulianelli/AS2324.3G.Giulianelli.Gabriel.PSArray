@@ -16,7 +16,10 @@
             double min = 0;
             int  posmax = 0;
             int  posmin = 0;
+            int voto = 0;
             double mediaponderata = MediaPonderata(voti, pesi, nVoti, ref  max,ref posmax,ref  min,ref posmin);
+            Console.WriteLine($"La media ponderata è {mediaponderata} il valor emassimo è {max} in posizione {posmax}  e il valore minimo è {min} in posione {posmin}");
+            ElencoVotiNellIntorno(voti, pesi, nVoti,voto);
 
 
         }
@@ -79,8 +82,19 @@
             }
             return mediaponderata;
         }
+        static void  ElencoVotiNellIntorno(double[] voti, int[] pesi, int nVoti, int   voto)
+        {
+            for (int i = 0; i < nVoti; i++) {
+                if (voti[i] > voto - 0.5 && voti[i] < voto + 0.5)
+                {
+                    Console.WriteLine($"Il voto {voti[i]} in posizione {i + 1} è compreso tra {voto - 0.5} e {voto + 0.5}");
+                }
+            }
+
+        }
 
 
-			}
-}
+
+
+            }
 }
