@@ -20,6 +20,8 @@
             double mediaponderata = MediaPonderata(voti, pesi, nVoti, ref  max,ref posmax,ref  min,ref posmin);
             Console.WriteLine($"La media ponderata è {mediaponderata} il valor emassimo è {max} in posizione {posmax}  e il valore minimo è {min} in posione {posmin}");
             ElencoVotiNellIntorno(voti, pesi, nVoti,voto);
+            OrdinaPerVoto( ref voti, ref pesi, nVoti);
+
 
 
         }
@@ -39,7 +41,7 @@
            
             for(int i=0; i <nVoti;i++)
             {
-                voti[i] = random.Next(0, 11);
+                voti[i] = random.NextDouble()*10+1;
                 pesi[i] = random.Next(0, 101);
             }
         }
@@ -92,9 +94,32 @@
             }
 
         }
+        static void OrdinaPerVoto(ref double[] voti, ref int[] pesi, int nVoti)
+        {
+            double  temp = 0;
+            int   temppesi = 0;
+            for (int i=0; i < nVoti; i++)
+            {
+                for (int j = 0; j < nVoti - 1; j++)
+                        if (voti[i] > voti[i + 1])
+                        {
+                         temp = voti[i];
+                         voti[i] = voti[i + 1];
+                         voti[i + 1] = temp;
+                         temppesi = pesi[j];
+                         pesi[j] = pesi[j + 1];
+                        pesi[j+1]= temppesi;
 
 
-
+                        }
 
             }
+          
+
+        }
+
+
+
+
+        }
 }
