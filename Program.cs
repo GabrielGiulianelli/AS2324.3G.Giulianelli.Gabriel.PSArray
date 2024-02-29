@@ -6,12 +6,17 @@
         {
             Console.WriteLine("Giulianelli Gavbriel 3G verifica informatica");
             Console.WriteLine("Inserire il numero di voti");
-            int nvoti=Convert.ToInt32(Console.ReadLine());
-            double[] voti = new double[nvoti];
-            int[]pesi= new int[nvoti];
-            CaricaVettori(ref voti, ref pesi, nvoti);
-            StampaVotiPesi(voti, pesi, nvoti);
-            StampaVotiDispariMaggiori4(ref voti, ref pesi, nvoti);
+            int nVoti=Convert.ToInt32(Console.ReadLine());
+            double[] voti = new double[nVoti];
+            int[]pesi= new int[nVoti];
+            CaricaVettori(ref voti, ref pesi, nVoti);
+            StampaVotiPesi(voti, pesi, nVoti);
+            StampaVotiDispariMaggiori4(ref voti, ref pesi, nVoti);
+            double max = 0;
+            double min = 0;
+            int  posmax = 0;
+            int  posmin = 0;
+            double mediaponderata = MediaPonderata(voti, pesi, nVoti, ref  max,ref posmax,ref  min,ref posmin);
 
 
         }
@@ -45,5 +50,37 @@
                 }
             }
         }
-    }
+        static double MediaPonderata(double[] voti, int[] pesi, int nVoti, ref double max, ref int posmax, ref double min, ref int posmin)
+        {
+            double mediaponderata = 0;
+            double sommatoriavotipesi = 0;
+            int sommatoria = 0;
+            for (int i = 0; i < nVoti; i++)
+            {
+                sommatoria += pesi[i];
+                sommatoriavotipesi = voti[i] + pesi[i];
+
+            }
+            mediaponderata = sommatoriavotipesi / sommatoria;
+            min = voti[0];
+            max = voti[0];
+            for (int i = 0; i < nVoti; i++)
+            {
+                if (voti[i]> max)
+                {
+                    max = voti[i];
+                    posmax = i;
+                }
+                if (voti[i] > min)
+                {
+                    min = voti[i];
+                    posmin = i;
+                }
+            }
+            return mediaponderata;
+        }
+
+
+			}
+}
 }
