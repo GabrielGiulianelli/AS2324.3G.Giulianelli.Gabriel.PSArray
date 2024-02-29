@@ -11,7 +11,9 @@
             int[]pesi= new int[nvoti];
             CaricaVettori(ref voti, ref pesi, nvoti);
             StampaVotiPesi(voti, pesi, nvoti);
-            
+            StampaVotiDispariMaggiori4(ref voti, ref pesi, nvoti);
+
+
         }
 
 
@@ -31,6 +33,16 @@
             {
                 voti[i] = random.Next(0, 11);
                 pesi[i] = random.Next(0, 101);
+            }
+        }
+        static void StampaVotiDispariMaggiori4(ref double[] voti, ref int[] pesi, int nVoti)
+        {
+            for (int i=0; i < nVoti; i+=2)
+            {
+                if (voti[i] > 4)
+                {
+                    Console.WriteLine($"I voti maggiori di 4 sono {voti[i]} con i relativi pesi {pesi[i]}");
+                }
             }
         }
     }
